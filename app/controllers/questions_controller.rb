@@ -10,7 +10,10 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
-    render json: @question
+    render json: {
+      question: @question,
+      answers: @question.answers
+    }
   end
 
   # POST /questions
