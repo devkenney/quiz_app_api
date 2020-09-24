@@ -3,9 +3,16 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
+    question_answer = []
 
-    render json: @questions
+    for question in Question.all
+      question_answer.push({
+        question: question,
+        answers: question.answers
+      })
+    end    
+
+    render json: question_answer
   end
 
   # GET /questions/1
